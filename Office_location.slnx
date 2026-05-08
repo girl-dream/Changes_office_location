@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="winform/winform.csproj" Id="20a0bb37-8c0b-4a23-a412-01b7109b0632" />
+  <Project Path="winui3/winui3.csproj" Id="04f72598-271f-4df0-a8e9-dcac6d51e2d8">
+    <Platform Project="x64" />
+    <Deploy />
+  </Project>
+</Solution>
