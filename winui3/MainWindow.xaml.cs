@@ -1,31 +1,34 @@
 using System;
 using System.IO;
+using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-using Microsoft.Windows.Storage.Pickers;
 using Microsoft.Win32;
-
-// To learn more about WinUI, the WinUI project structure,
-// and more about our project templates, see: http://aka.ms/winui-project-info.
+using Microsoft.Windows.Storage.Pickers;
 
 namespace winui3
 {
-    /// <summary>
-    /// An empty window that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class MainWindow : Window
     {
+        private static Mutex mutex = new Mutex(true, "office_tool");
         private static readonly string Original_Office_Path = @"C:\Program Files\Microsoft Office";
-
         public MainWindow()
         {
-            InitializeComponent();
-            AppWindow.Resize(new Windows.Graphics.SizeInt32(600, 400));
-            var presenter = (OverlappedPresenter)AppWindow.Presenter;
-            presenter.IsResizable = false;
-            presenter.IsMaximizable = false;
+            if (mutex.WaitOne(TimeSpan.Zero, true))
+            {
+                InitializeComponent();
+                AppWindow.Resize(new Windows.Graphics.SizeInt32(600, 400));
+                var presenter = (OverlappedPresenter)AppWindow.Presenter;
+                presenter.IsResizable = false;
+                presenter.IsMaximizable = false;
+                mutex.ReleaseMutex();
+            }
+            else
+            {
+                Application.Current.Exit();
+            }
         }
 
         private async Task<ContentDialogResult> ShowMessageBox(string content, string title = "提示")
@@ -34,9 +37,8 @@ namespace winui3
             {
                 Title = title,
                 Content = content,
-                //PrimaryButtonText = "",
                 CloseButtonText = "确定",
-                XamlRoot = this.Content.XamlRoot
+                XamlRoot = this.Content.XamlRoot,
             };
             return await dialog.ShowAsync();
         }
