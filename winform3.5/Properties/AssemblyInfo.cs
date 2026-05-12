@@ -1,15 +1,15 @@
-﻿using System.Reflection;
-using System.Runtime.CompilerServices;
+﻿using System.Resources;
+using System.Reflection;
 using System.Runtime.InteropServices;
 
 // 有关程序集的一般信息由以下
 // 控制。更改这些特性值可修改
 // 与程序集关联的信息。
-[assembly: AssemblyTitle("Office_location")]
+[assembly: AssemblyTitle("Office-tools")]
 [assembly: AssemblyDescription("更改Office默认安装位置")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Office_location")]
+[assembly: AssemblyProduct("Office-tools")]
 [assembly: AssemblyCopyright("少女幻梦")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // 如果此项目向 COM 公开，则下列 GUID 用于类型库的 ID
-[assembly: Guid("20a0bb37-8c0b-4a23-a412-01b7109b0632")]
+[assembly: Guid("7cf96535-686c-429e-af9e-cf676094a70c")]
 
 // 程序集的版本信息由下列四个值组成: 
 //
@@ -31,3 +31,4 @@ using System.Runtime.InteropServices;
 //
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: NeutralResourcesLanguage("zh-CN")]

@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using Microsoft.Win32;
 
-namespace Office_location
+namespace winform3._5
 {
     public partial class Form1 : Form
     {
@@ -22,28 +22,6 @@ namespace Office_location
         {
             File = 0,
             Directory = 1
-        }
-
-        private void Block_OfficePlus_Click(object sender, System.EventArgs e)
-        {
-            try
-            {
-                RegistryKey key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\MSOfficePLUS", writable: true);
-
-                if (key == null)
-                {
-                    key = Registry.LocalMachine.CreateSubKey(
-                        @"SOFTWARE\Microsoft\MSOfficePLUS");
-                }
-
-                key.SetValue("InstallSuccess", "");
-                key.Close();
-                MessageBox.Show("设置完成", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            catch (Exception error)
-            {
-                MessageBox.Show(error.ToString(), "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
         }
 
         private void chang_location_Click(object sender, System.EventArgs e)
@@ -68,11 +46,12 @@ namespace Office_location
                     try
                     {
                         // .NET Framework 不支持以下方法
-                        //Directory.CreateSymbolicLink(Original_Office_Path, path);
+                        // Directory.CreateSymbolicLink(Original_Office_Path, path);
                         bool temp = CreateSymbolicLink(Original_Office_Path, path, SymbolicLinkFlags.Directory);
                         if (temp)
                         {
                             MessageBox.Show("完成安装位置设置", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                         }
                         else
                         {
@@ -89,6 +68,28 @@ namespace Office_location
                 {
                     MessageBox.Show("取消操作!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
+            }
+        }
+
+        private void Block_OfficePlus_Click(object sender, System.EventArgs e)
+        {
+            try
+            {
+                RegistryKey key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\MSOfficePLUS", writable: true);
+
+                if (key == null)
+                {
+                    key = Registry.LocalMachine.CreateSubKey(
+                        @"SOFTWARE\Microsoft\MSOfficePLUS");
+                }
+
+                key.SetValue("InstallSuccess", "");
+                key.Close();
+                MessageBox.Show("设置完成", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show(error.ToString(), "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
