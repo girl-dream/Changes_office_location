@@ -8,6 +8,8 @@
 mklink /j "C:\Program Files\Microsoft Office" "自定义的目录\Microsoft Office"
 ```
 
+---
+
 [阻止OfficePLUS自动安装](https://blog.yerong.org/archives/641)
 ```bat
 reg add "HKLM\SOFTWARE\Microsoft\MSOfficePLUS" /v "InstallSuccess" /f
