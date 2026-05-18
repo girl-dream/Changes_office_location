@@ -1,10 +1,18 @@
 <Solution>
+  <Configurations>
+    <Platform Name="Any CPU" />
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="win32_cpp/win32_cpp.vcxproj" Id="0f8c5bda-3042-4353-b3d7-202c16c61a1e" />
   <Project Path="winform/winform.csproj" Id="20a0bb37-8c0b-4a23-a412-01b7109b0632">
-    <BuildType Project="Release" />
+    <BuildType Solution="Debug|Any CPU" Project="Release" />
   </Project>
   <Project Path="winform3.5/winform3.5.csproj" Id="7cf96535-686c-429e-af9e-cf676094a70c" />
   <Project Path="winui3/winui3.csproj" Id="04f72598-271f-4df0-a8e9-dcac6d51e2d8">
-    <Platform Project="x64" />
-    <Deploy />
+    <Platform Solution="*|Any CPU" Project="x64" />
+    <Platform Solution="*|x64" Project="x64" />
+    <Platform Solution="*|x86" Project="x86" />
+    <Deploy Solution="*|Any CPU" />
   </Project>
 </Solution>

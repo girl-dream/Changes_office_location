@@ -50,11 +50,11 @@ namespace Office_location
         {
             if (Directory.Exists(Original_Office_Path))
             {
-                MessageBox.Show("发现已经默认安装位置已存在文件夹！", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("发现默认安装位置已存在文件夹！", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            using (FolderBrowserDialog folderDialog = new FolderBrowserDialog())
+            using (FolderBrowserDialog folderDialog = new   ())
             {
                 folderDialog.Description = "请选择Office安装更改后的文件夹";
                 folderDialog.ShowNewFolderButton = true;

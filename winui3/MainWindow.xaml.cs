@@ -69,7 +69,7 @@ namespace winui3
         {
             if (Directory.Exists(Original_Office_Path))
             {
-                await ShowMessageBox("发现已经默认安装位置已存在文件夹！");
+                await ShowMessageBox("发现默认安装位置已存在文件夹！");
                 return;
             }
 

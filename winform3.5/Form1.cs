@@ -28,7 +28,7 @@ namespace winform3._5
         {
             if (Directory.Exists(Original_Office_Path))
             {
-                MessageBox.Show("发现已经默认安装位置已存在文件夹！", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("发现默认安装位置已存在文件夹！", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
